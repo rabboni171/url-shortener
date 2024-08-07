@@ -1,0 +1,19 @@
+FROM golang:1.20-alpine
+
+# Создаем рабочую директорию
+WORKDIR /app
+
+# Копируем файлы приложения в контейнер
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY . .
+
+# Собираем приложение
+RUN go build -o url-shortener ./cmd/main.go
+
+# Указываем порт, который будет открыт в контейнере
+EXPOSE 8080
+
+# Запуск приложения
+CMD ["./url-shortener"]

@@ -1,0 +1,14 @@
+{
+  "app_params": {
+    "server_url": "127.0.0.1",
+    "port_run": "8080",
+    "write_timeout": 15,
+    "read_timeout": 15,
+    "base_url" : "http://localhost"
+  },
+  "db_redis_params": {
+    "addr": "localhost:6379",
+    "password": "",
+    "db": 0
+  }
+}
