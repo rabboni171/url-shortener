@@ -1,0 +1,28 @@
+# Имя исполняемого файла
+BINARY_NAME=url-shortener
+
+# Сборка Go приложения
+build:
+	go build -o $(BINARY_NAME) ./cmd/main.go
+
+# Запуск приложения
+run: build
+	./$(BINARY_NAME)
+
+# Запуск тестов
+test:
+	go test ./...
+
+# Очистка собранных файлов
+clean:
+	rm -f $(BINARY_NAME)
+
+# Создание Docker образа
+docker-build:
+	docker build -t url-shortener .
+
+# Запуск Docker контейнера
+docker-run:
+	docker run -p 8080:8080 url-shortener
+
+.PHONY: build run test clean docker-build docker-run
